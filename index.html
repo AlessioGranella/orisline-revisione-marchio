@@ -826,9 +826,6 @@ function bgOf(node){
 }
 function bloom(P,at,tl){
   const start=DIAG.y-18;
-  // bordo color fondo: separa le stecche sovrapposte durante l'apertura, poi sparisce
-  const edge=bgOf(P.g.ownerSVGElement), ew=.0;
-  K.forEach(k=>{P.petals[k].style.stroke=edge;P.petals[k].style.strokeWidth=2.2;P.petals[k].style.paintOrder='stroke';});
   ['y','b','g','o'].forEach(k=>{
     const pr={th:start,s:0,w:0};
     const apply=()=>{Object.assign(P.st[k],petalAt(k,pr.th,pr.s,pr.w));P.render();};
@@ -836,7 +833,6 @@ function bloom(P,at,tl){
     tl.to(pr,{s:1,w:1,duration:.55,ease:'back.out(1.7)',onUpdate:apply},at);
     tl.to(pr,{th:DIAG[k],duration:1.6,ease:'power3.inOut',onUpdate:apply},at+.3);
   });
-  tl.to(K.map(k=>P.petals[k]),{strokeWidth:ew,duration:.5,ease:'power1.out'},at+1.75);
   return tl;
 }
 
