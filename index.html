@@ -891,6 +891,9 @@ function bgOf(node){
 }
 function bloom(P,at,tl){
   const start=DIAG.y-18;
+  // ordine di disegno dal petalo più grande al più piccolo: da chiusi si vedono tutti (l'arancio davanti)
+  ['y','b','g','o'].forEach(k=>{P.g.appendChild(P.petals[k]);if(P.hl[k])P.g.appendChild(P.hl[k]);});
+  P.g.appendChild(P.dot);
   ['y','b','g','o'].forEach(k=>{
     const pr={th:start,s:0,w:0};
     const apply=()=>{Object.assign(P.st[k],petalAt(k,pr.th,pr.s,pr.w));P.render();};
@@ -1110,7 +1113,8 @@ function go(i,instant){
     if(current!==i)return;
     if(h&&h.enter){const t=h.enter();running.push(t);
       const fz=(location.search.match(/freeze=([\d.]+)/)||[])[1]; if(fz&&t&&t.pause){t.pause();t.seek(+fz,false);}} // fermo-immagine per i test
-    else if(next.querySelector('[data-lockup]'))running.push(animStatic(next));
+    else if(next.querySelector('[data-lockup]')){const t=animStatic(next);running.push(t);
+      const fz=(location.search.match(/freeze=([\d.]+)/)||[])[1]; if(fz){t.pause();t.seek(+fz,false);}}
   });
 }
 document.getElementById('next').onclick=()=>go(current+1);
