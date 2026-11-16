@@ -111,11 +111,10 @@ p{margin:0}
 
 /* 1 · copertina */
 .cover{grid-template-rows:1fr auto}
-.cover .wrap{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:var(--gutter);align-items:center;min-height:0}
+.cover .wrap{display:flex;align-items:center;min-height:0}
+.cover h1{font-size:clamp(3.4rem,10vw,10rem);max-width:12ch}
 .cover .meta{display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:18px}
 .cover .meta .who{font-size:1.25rem;letter-spacing:-.01em}
-.cover .svgbox{height:min(62vh,640px)}
-@media (max-width:860px){.cover .wrap{grid-template-columns:1fr}.cover .svgbox{height:34vh}}
 
 /* 2 · marchio attuale */
 .oldlogo{display:flex;align-items:center;justify-content:center;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--ag-white);min-height:0;padding:clamp(24px,6vh,72px)}
@@ -218,23 +217,21 @@ p{margin:0}
 <main class="deck" id="deck">
 
 <!-- 1 · Copertina -->
-<section class="slide dark cover" data-hud="dark" id="s1" aria-label="Copertina">
+<section class="slide cover" id="s1" aria-label="Copertina">
   <div class="inner wrap">
     <div style="display:flex;flex-direction:column;gap:clamp(18px,3vh,32px)">
       <div class="eyebrow">OrisLine · Revisione del marchio</div>
       <h1 class="split">Il marchio, rimesso in <em>ordine</em>.</h1>
-      <p class="lead">Pittogramma, colori e carattere. Prima proposta per il nuovo brand book, novembre 2026.</p>
     </div>
-    <div class="svgbox" id="coverStage"></div>
   </div>
   <div class="inner meta">
     <span class="who">alessio granella</span>
-    <span class="small">Frecce, rotella o swipe per andare avanti</span>
+    <span class="small">Novembre 2026</span>
   </div>
 </section>
 
 <!-- 2 · Marchio attuale -->
-<section class="slide s2" id="s2" aria-label="Il marchio di oggi">
+<section class="slide soft s2" id="s2" aria-label="Il marchio di oggi">
   <div class="inner head">
     <div class="eyebrow"><span class="n">01</span>Il punto di partenza</div>
     <h2 class="split">Il marchio di <em>oggi</em></h2>
@@ -242,43 +239,43 @@ p{margin:0}
   <div class="inner body">
     <div class="oldlogo"><img src="assets/orisline-logo-attuale.svg" alt="Logo OrisLine attuale: fiore a quattro petali sfumati e scritta OrisLine"></div>
     <div class="facts">
-      <div><h3>Scritta</h3><p>Myriad Pro di serie: «Oris» in Bold, «Line» in Regular. Nessuna lettera disegnata su misura.</p></div>
-      <div><h3>Pittogramma</h3><p>Quattro petali e un pallino. Ogni petalo è una sfumatura fra due colori.</p></div>
-      <div><h3>File</h3><p>CorelDRAW, Illustrator e Photoshop, dal 2009 al 2020. I colori cambiano da un file all'altro.</p></div>
+      <div><h3>Myriad Pro di serie</h3></div>
+      <div><h3>8 colori in sfumatura</h3></div>
+      <div><h3>Colori diversi in ogni file</h3></div>
     </div>
   </div>
 </section>
 
 <!-- 3 · Analisi -->
-<section class="slide soft" id="s3" aria-label="Analisi del pittogramma">
+<section class="slide" id="s3" aria-label="Analisi del pittogramma">
   <div class="inner head">
     <div class="eyebrow"><span class="n">02</span>Analisi del pittogramma</div>
     <h2 class="split">I petali non seguono una <em>regola</em> comune</h2>
   </div>
   <div class="inner two">
     <ol class="steps" id="anSteps">
-      <li><button type="button" data-step="0"><span class="k">01</span><b>Inclinazione</b><span class="t">Quattro angoli diversi: 42,5°, 45,7°, 44,5° e 41,3°. Il fiore sembra appena storto.</span></button><div class="bar"></div></li>
-      <li><button type="button" data-step="1"><span class="k">02</span><b>Distanza dal centro</b><span class="t">Le punte interne stanno a distanze diverse dal pallino, con uno scarto fino al 2,4%.</span></button><div class="bar"></div></li>
-      <li><button type="button" data-step="2"><span class="k">03</span><b>Pallino</b><span class="t">È piccolo e lontano dai petali. Resta isolato e non tiene insieme la forma.</span></button><div class="bar"></div></li>
-      <li><button type="button" data-step="3"><span class="k">04</span><b>Colore</b><span class="t">Otto colori in quattro sfumature, ognuna orientata in un verso diverso.</span></button><div class="bar"></div></li>
+      <li><button type="button" data-step="0"><span class="k">01</span><b>Quattro inclinazioni</b></button><div class="bar"></div></li>
+      <li><button type="button" data-step="1"><span class="k">02</span><b>Distanze diverse</b></button><div class="bar"></div></li>
+      <li><button type="button" data-step="2"><span class="k">03</span><b>Pallino isolato</b></button><div class="bar"></div></li>
+      <li><button type="button" data-step="3"><span class="k">04</span><b>Sfumature opposte</b></button><div class="bar"></div></li>
     </ol>
     <div class="svgbox" id="anStage"></div>
   </div>
 </section>
 
 <!-- 4 · Costruzione -->
-<section class="slide dark" data-hud="dark" id="s4" aria-label="La costruzione">
+<section class="slide soft" id="s4" aria-label="La costruzione">
   <div class="inner head">
     <div class="eyebrow"><span class="n">03</span>La costruzione</div>
     <h2 class="split">Una regola sola per tutti i <em>petali</em></h2>
   </div>
   <div class="inner two">
     <ol class="steps" id="coSteps">
-      <li><button type="button" data-step="0"><span class="k">01</span><b>Una sola ellisse</b><span class="t">I quattro petali sono la stessa ellisse in quattro grandezze. Rapporto fra gli assi 0,646 per tutti.</span></button><div class="bar"></div></li>
-      <li><button type="button" data-step="1"><span class="k">02</span><b>45°</b><span class="t">Ogni petalo è inclinato a 45°, sulla diagonale del quadrato.</span></button><div class="bar"></div></li>
-      <li><button type="button" data-step="2"><span class="k">03</span><b>Stessa distanza</b><span class="t">Le punte interne toccano lo stesso cerchio attorno al centro.</span></button><div class="bar"></div></li>
-      <li><button type="button" data-step="3"><span class="k">04</span><b>Il centro</b><span class="t">Il pallino cresce del 43%. Diventa il punto da cui partono i petali.</span></button><div class="bar"></div></li>
-      <li><button type="button" data-step="4"><span class="k">05</span><b>Colore pieno</b><span class="t">Quattro colori pieni, senza sfumature, nello stesso ordine di oggi.</span></button><div class="bar"></div></li>
+      <li><button type="button" data-step="0"><span class="k">01</span><b>Una sola ellisse</b></button><div class="bar"></div></li>
+      <li><button type="button" data-step="1"><span class="k">02</span><b>45° per tutti</b></button><div class="bar"></div></li>
+      <li><button type="button" data-step="2"><span class="k">03</span><b>Stessa distanza</b></button><div class="bar"></div></li>
+      <li><button type="button" data-step="3"><span class="k">04</span><b>Pallino +43%</b></button><div class="bar"></div></li>
+      <li><button type="button" data-step="4"><span class="k">05</span><b>Colore pieno</b></button><div class="bar"></div></li>
     </ol>
     <div class="svgbox" id="coStage"></div>
   </div>
@@ -327,21 +324,18 @@ p{margin:0}
       <table class="table">
         <thead><tr><th></th><th>Oggi</th><th>Proposta</th></tr></thead>
         <tbody>
-          <tr class="hl"><td>Inclinazione dei petali</td><td class="num">41,3° – 45,7°</td><td class="num">45° per tutti</td></tr>
-          <tr class="hl"><td>Distanza delle punte dal centro</td><td class="num">scarto fino al 2,4%</td><td>identica</td></tr>
-          <tr><td>Forma dei petali</td><td class="num">4 proporzioni diverse</td><td class="num">1 ellisse, rapporto 0,646</td></tr>
-          <tr class="hl"><td>Pallino, rispetto al petalo grande</td><td class="num">0,157</td><td class="num">0,224 · +43%</td></tr>
-          <tr><td>Colori</td><td class="num">8, in 4 sfumature</td><td class="num">4 pieni</td></tr>
-          <tr><td>Grandezze dei petali</td><td class="num">100 · 87 · 75 · 64</td><td class="num">100 · 88 · 75 · 63</td></tr>
+          <tr class="hl"><td>Inclinazione</td><td class="num">41,3° – 45,7°</td><td class="num">45°</td></tr>
+          <tr class="hl"><td>Distanza dal centro</td><td class="num">±2,4%</td><td>identica</td></tr>
+          <tr class="hl"><td>Pallino</td><td class="num">0,157</td><td class="num">0,224</td></tr>
+          <tr><td>Colori</td><td class="num">8 sfumati</td><td class="num">4 pieni</td></tr>
         </tbody>
       </table>
-      <p class="small" style="margin-top:14px">Le grandezze relative restano quasi le stesse: il fiore resta riconoscibile per chi lo conosce.</p>
     </div>
   </div>
 </section>
 
 <!-- 7 · Carattere 1 -->
-<section class="slide dark" data-hud="dark" id="s7" aria-label="Carattere, proposta 1: Prompt">
+<section class="slide" id="s7" aria-label="Carattere, proposta 1: Prompt">
   <div class="inner head">
     <div class="eyebrow"><span class="n">06</span>Carattere · proposta 1</div>
     <h2 class="split"><span style="font-family:'Prompt',sans-serif;font-weight:600;letter-spacing:-.02em">Prompt</span></h2>
@@ -350,18 +344,17 @@ p{margin:0}
     <div class="spec">
       <div class="aa" style="font-family:'Prompt',sans-serif"><span style="font-weight:600">Aa</span><span style="font-weight:300">Aa</span></div>
       <div class="abc" style="font-family:'Prompt',sans-serif;font-weight:300">ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>abcdefghijklmnopqrstuvwxyz<br>0123456789 · € % & @</div>
-      <p class="note">Sans geometrica con forme rotonde e aperture ampie. «Oris» in SemiBold, «Line» in Light. Gratuita su Google Fonts con licenza OFL: si usa su sito, software e stampa senza costi.</p>
       <div class="w"><span>SemiBold 600</span><span>Light 300</span></div>
     </div>
     <div class="lockups">
-      <div class="cell"><div class="svgbox" data-lockup="prompt" data-mono="#F0EFEE"></div><span class="cap">Orizzontale</span></div>
-      <div class="cell"><div class="svgbox" data-lockup="promptV" data-mono="#F0EFEE"></div><span class="cap">Verticale</span></div>
+      <div class="cell"><div class="svgbox" data-lockup="prompt" data-mono="#001E35"></div><span class="cap">Orizzontale</span></div>
+      <div class="cell"><div class="svgbox" data-lockup="promptV" data-mono="#001E35"></div><span class="cap">Verticale</span></div>
     </div>
   </div>
 </section>
 
 <!-- 8 · Carattere 2 -->
-<section class="slide" id="s8" aria-label="Carattere, proposta 2: Funnel Display">
+<section class="slide soft" id="s8" aria-label="Carattere, proposta 2: Funnel Display">
   <div class="inner head">
     <div class="eyebrow"><span class="n">07</span>Carattere · proposta 2</div>
     <h2 class="split"><span style="font-family:'Funnel Display',sans-serif;font-weight:700;letter-spacing:-.02em">Funnel Display</span></h2>
@@ -370,7 +363,6 @@ p{margin:0}
     <div class="spec">
       <div class="aa" style="font-family:'Funnel Display',sans-serif"><span style="font-weight:700">Aa</span><span style="font-weight:300">Aa</span></div>
       <div class="abc" style="font-family:'Funnel Display',sans-serif;font-weight:300">ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>abcdefghijklmnopqrstuvwxyz<br>0123456789 · € % & @</div>
-      <p class="note">Sans contemporanea, più compatta e tesa di Prompt. «Oris» in Bold, «Line» in Light. Gratuita su Google Fonts con licenza OFL.</p>
       <div class="w"><span>Bold 700</span><span>Light 300</span></div>
     </div>
     <div class="lockups">
@@ -381,7 +373,7 @@ p{margin:0}
 </section>
 
 <!-- 9 · Confronto -->
-<section class="slide soft" id="s9" aria-label="Prompt e Funnel a confronto">
+<section class="slide" id="s9" aria-label="Prompt e Funnel a confronto">
   <div class="inner head">
     <div class="eyebrow"><span class="n">08</span>Confronto</div>
     <h2 class="split">Prompt e Funnel, sullo stesso <em>fiore</em></h2>
@@ -402,7 +394,7 @@ p{margin:0}
 </section>
 
 <!-- 10 · Colori -->
-<section class="slide" id="s10" aria-label="Colori">
+<section class="slide soft" id="s10" aria-label="Colori">
   <div class="inner head">
     <div class="eyebrow"><span class="n">09</span>Colori</div>
     <h2 class="split">Gli stessi quattro colori, più <em>puliti</em></h2>
@@ -416,13 +408,12 @@ p{margin:0}
         <button class="btn" type="button" data-cl="luce" aria-pressed="true">Nuovi + punti luce</button>
       </div>
       <div class="sw-list" id="clList"></div>
-      <p class="small" id="clNote">Stesso ordine e stessa posizione dei petali. Il pallino passa a un blu notte.</p>
     </div>
   </div>
 </section>
 
 <!-- 11 · Proposte -->
-<section class="slide soft" id="s11" aria-label="Le proposte">
+<section class="slide" id="s11" aria-label="Le proposte">
   <div class="inner head">
     <div class="eyebrow"><span class="n">10</span>Le proposte</div>
     <h2 class="split">Quattro versioni del <em>marchio</em></h2>
@@ -447,18 +438,18 @@ p{margin:0}
 </section>
 
 <!-- 13 · Chiusura -->
-<section class="slide dark close" data-hud="dark" id="s13" aria-label="Prossimi passi">
+<section class="slide soft close" id="s13" aria-label="Prossimi passi">
   <div class="inner head">
     <div class="eyebrow"><span class="n">11</span>Prossimi passi</div>
     <h2 class="split">Da scegliere <em>insieme</em></h2>
   </div>
   <ul class="inner choices">
-    <li><span class="k">01</span><b>Il carattere</b><p>Prompt o Funnel Display, per la scritta e per tutta la comunicazione.</p></li>
-    <li><span class="k">02</span><b>I punti luce</b><p>Petali pieni, oppure con il riflesso più chiaro sul bordo.</p></li>
-    <li><span class="k">03</span><b>Il payoff</b><p>«Innovative dental software» sotto la scritta, oppure il marchio da solo.</p></li>
+    <li><span class="k">01</span><b>Prompt o Funnel</b></li>
+    <li><span class="k">02</span><b>Punti luce sì o no</b></li>
+    <li><span class="k">03</span><b>Payoff sì o no</b></li>
   </ul>
   <div class="inner sign">
-    <p class="lead">Dopo la scelta preparo il brand book di base: logo e varianti, colori in HEX, RGB, CMYK e Pantone, caratteri e regole d'uso.</p>
+    <span class="small">Poi il brand book di base</span>
     <span class="who">alessio granella · Al tuo fianco ad ogni passo.</span>
   </div>
 </section>
@@ -545,34 +536,6 @@ function Lockup(box,key,opts={}){
   return {svg:s,P,glyphs,wg};
 }
 
-/* ---------- Copertina ---------- */
-const cover={};
-(function(){
-  const box=document.getElementById('coverStage');
-  const s=svgRoot(box,'-92 -92 184 180');
-  cover.P=Picto(s,{mode:'flat',light:true});
-  cover.groups=K.map(k=>{const gg=el('g',{},cover.P.g);gg.appendChild(cover.P.petals[k]);gg.appendChild(cover.P.hl[k]);return gg;});
-  cover.P.g.appendChild(cover.P.dot);
-  const depth=[7,5,4,6];
-  const qx=cover.groups.map(gg=>gsap.quickTo(gg,'x',{duration:1.2,ease:'power3.out'}));
-  const qy=cover.groups.map(gg=>gsap.quickTo(gg,'y',{duration:1.2,ease:'power3.out'}));
-  window.addEventListener('pointermove',e=>{
-    if(current!==0||RM)return;
-    const mx=e.clientX/innerWidth-.5,my=e.clientY/innerHeight-.5;
-    cover.groups.forEach((gg,i)=>{qx[i](mx*depth[i]);qy[i](my*depth[i]);});
-  });
-  cover.enter=()=>{
-    const st=cover.P.st;
-    const tl=gsap.timeline();
-    K.forEach(k=>Object.assign(st[k],{cx:0,cy:0,a:0,b:0}));st.dot=0;cover.P.render();
-    K.forEach(k=>gsap.set(cover.P.hl[k],{opacity:0}));
-    tl.to(st,{dot:NEW.dot,duration:.9,ease:'back.out(3)',onUpdate:cover.P.render},.3);
-    K.forEach((k,i)=>tl.to(st[k],{...NEW[k],duration:1.5,ease:'expo.out',onUpdate:cover.P.render},.5+i*.12));
-    tl.to(K.map(k=>cover.P.hl[k]),{opacity:1,duration:.8,stagger:.1},1.5);
-    return tl;
-  };
-})();
-
 /* ---------- Analisi ---------- */
 const an={};
 (function(){
@@ -635,21 +598,21 @@ const co={};
 (function(){
   const box=document.getElementById('coStage');
   const s=svgRoot(box,'-100 -98 200 196');
-  const G='#485349';
+  const G='#B5B2AC', INKL='#1A2B1E';
   const grid=el('g',{},s);
   [[-92,-92,92,92],[-92,92,92,-92],[-96,0,96,0],[0,-96,0,96]].forEach((c,i)=>{
     const l=el('line',{x1:c[0],y1:c[1],x2:c[2],y2:c[3],stroke:G,'stroke-width':i<2?.35:.25,'stroke-dasharray':i<2?'1.6 1.6':'none'},grid);});
   const square=el('rect',{x:-92,y:-92,width:184,height:184,fill:'none',stroke:G,'stroke-width':.3},grid);
-  const P=Picto(s,{mode:'outline',stroke:MUSCHIO,state:NEW});
+  const P=Picto(s,{mode:'outline',stroke:INKL,state:NEW});
   const fills=Picto(s,{mode:'flat',light:true});
-  const ring=el('circle',{cx:0,cy:0,r:TIP,fill:'none',stroke:'#F0EFEE','stroke-width':.45,'stroke-dasharray':'1.2 1.2',opacity:0},s);
+  const ring=el('circle',{cx:0,cy:0,r:TIP,fill:'none',stroke:RUST,'stroke-width':.45,'stroke-dasharray':'1.2 1.2',opacity:0},s);
   const tips=el('g',{opacity:0},s);
-  K.forEach(k=>{const p=NEW[k];const d=Math.hypot(p.cx,p.cy);el('circle',{cx:p.cx/d*TIP,cy:p.cy/d*TIP,r:1,fill:'#F0EFEE'},tips);});
-  const ghost=el('circle',{cx:0,cy:0,r:OLD.dot,fill:'none',stroke:MUSCHIO,'stroke-width':.4,'stroke-dasharray':'1 1',opacity:0},s);
+  K.forEach(k=>{const p=NEW[k];const d=Math.hypot(p.cx,p.cy);el('circle',{cx:p.cx/d*TIP,cy:p.cy/d*TIP,r:1,fill:RUST},tips);});
+  const ghost=el('circle',{cx:0,cy:0,r:OLD.dot,fill:'none',stroke:'#9A978F','stroke-width':.4,'stroke-dasharray':'1 1',opacity:0},s);
   const labels=el('g',{opacity:0},s);
-  [[-70,-6,'45°'],[56,-6,'45°'],[-62,24,'45°'],[50,22,'45°']].forEach(([x,y,t])=>{const tx=el('text',{x,y,'font-size':6,fill:MUSCHIO,class:'svg-label'},labels);tx.textContent=t;});
-  const lbl43=el('text',{x:15,y:-13,'font-size':5.4,fill:'#F0EFEE',class:'svg-label',opacity:0},s);lbl43.textContent='+43%';
-  const lblTip=el('text',{x:0,y:24,'text-anchor':'middle','font-size':4.6,fill:'#F0EFEE',class:'svg-label',opacity:0},s);lblTip.textContent='r = stessa distanza';
+  [[-70,-6,'45°'],[56,-6,'45°'],[-62,24,'45°'],[50,22,'45°']].forEach(([x,y,t])=>{const tx=el('text',{x,y,'font-size':6,fill:RUST,class:'svg-label'},labels);tx.textContent=t;});
+  const lbl43=el('text',{x:15,y:-13,'font-size':5.4,fill:RUST,class:'svg-label',opacity:0},s);lbl43.textContent='+43%';
+  const lblTip=el('text',{x:0,y:24,'text-anchor':'middle','font-size':4.6,fill:RUST,class:'svg-label',opacity:0},s);lblTip.textContent='stessa distanza';
   const items=[...document.querySelectorAll('#coSteps li')];
   let tl;
   function build(){
@@ -658,7 +621,7 @@ const co={};
     fills.g.setAttribute('opacity',0);
     gsap.set([ring,tips,ghost,labels,lbl43,lblTip],{opacity:0});
     P.petals.y.setAttribute('opacity',1);['b','o','g'].forEach(k=>P.petals[k].setAttribute('opacity',0));
-    P.dot.setAttribute('fill','#F0EFEE');
+    P.dot.setAttribute('fill',INKL);
     const t=gsap.timeline({paused:true});
     const mark=i=>()=>items.forEach((li,j)=>li.classList.toggle('on',j===i));
     t.addLabel('s0',0).call(mark(0),null,0);
@@ -804,16 +767,12 @@ const cl={mode:'luce',timer:null};
   const box=document.getElementById('clStage');
   const s=svgRoot(box,'-88 -88 176 168');
   const P=Picto(s,{mode:'flat',colors:COL.nuovi,light:true});
-  const list=document.getElementById('clList'),note=document.getElementById('clNote');
+  const list=document.getElementById('clList');
   const NAMES={y:'Giallo',b:'Azzurro',o:'Arancio',g:'Verde'};
-  const NOTES={attuali:'I colori di oggi, resi pieni. Il giallo è acido e il verde è scuro e spento.',
-               nuovi:'Gli stessi quattro colori, più caldi e luminosi. Il pallino passa a un blu notte.',
-               luce:'Sul bordo esterno di ogni petalo un tono più chiaro, come un riflesso di luce.'};
   function rows(mode){
     const base=mode==='attuali'?COL.attuali:COL.nuovi;
     list.innerHTML=K.map(k=>`<div class="sw-row"><i style="background:${base[k]}"></i><span><b>${NAMES[k]}</b>${mode==='luce'?`<span class="sub">punto luce ${COL.luce[k]}</span>`:''}</span><code>${base[k]}</code></div>`).join('')+
       `<div class="sw-row"><i style="background:${OL_INK}"></i><span><b>Pallino e scritta</b></span><code>${OL_INK}</code></div>`;
-    note.textContent=NOTES[mode];
   }
   function set(mode,instant){
     cl.mode=mode;const base=mode==='attuali'?COL.attuali:COL.nuovi;const d=instant?0:.9;
@@ -831,7 +790,7 @@ const cl={mode:'luce',timer:null};
 
 /* ---------- Navigazione ---------- */
 const slides=[...document.querySelectorAll('.slide')];
-const hooks={s1:cover,s3:an,s4:co,s5:cp,s6:mp,s9:vs,s10:cl};
+const hooks={s3:an,s4:co,s5:cp,s6:mp,s9:vs,s10:cl};
 const progress=document.getElementById('progress');
 slides.forEach((sl,i)=>{const b=document.createElement('button');b.type='button';b.setAttribute('aria-label','Vai alla diapositiva '+(i+1));b.onclick=()=>go(i);progress.appendChild(b);});
 // parole dei titoli
