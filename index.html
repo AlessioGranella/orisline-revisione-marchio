@@ -367,6 +367,28 @@ body.solo-on .foot:hover,body.solo-on .foot:focus-within{opacity:1}
   </div>
 </section>
 
+<!-- Proporzioni pittogramma / nome -->
+<section class="slide" id="s6b" aria-label="Proporzioni tra pittogramma e nome">
+  <div class="inner head">
+    <div class="eyebrow"><span class="n">06</span>Proporzioni</div>
+    <h2 class="split">Pittogramma e nome, in <em>proporzione</em></h2>
+  </div>
+  <div class="inner two">
+    <div class="side"><ol class="steps" id="ppSteps">
+      <li><button type="button"><span class="k">01</span><b>Il modulo x</b><span class="t">x è metà dell'altezza della scritta. Tutte le misure ne sono multipli.</span></button><div class="bar"></div></li>
+      <li><button type="button"><span class="k">02</span><b>Pittogramma 4x</b><span class="t">Il pittogramma è alto quattro moduli.</span></button><div class="bar"></div></li>
+      <li><button type="button"><span class="k">03</span><b>Scritta 2x</b><span class="t">La scritta è alta due moduli ed è centrata sull'asse del pittogramma.</span></button><div class="bar"></div></li>
+      <li><button type="button"><span class="k">04</span><b>Distanza 1x</b><span class="t">Tra pittogramma e scritta c'è un modulo.</span></button><div class="bar"></div></li>
+      <li><button type="button"><span class="k">05</span><b>Area di rispetto 1x</b><span class="t">Un modulo libero su tutti i lati.</span></button><div class="bar"></div></li>
+    </ol>
+    <div class="player">
+      <div class="seg" role="group" aria-label="Versione"><button class="btn" type="button" id="ppH" aria-pressed="true">Orizzontale</button><button class="btn" type="button" id="ppV" aria-pressed="false">Verticale</button></div>
+      <div class="seg" role="group" aria-label="Carattere"><button class="btn" type="button" id="ppP" aria-pressed="true">Prompt</button><button class="btn" type="button" id="ppF" aria-pressed="false">Funnel</button></div>
+    </div></div>
+    <div class="svgbox" id="ppStage"></div>
+  </div>
+</section>
+
 <!-- Logo da solo · Prompt -->
 <section class="slide solo" data-hud="none" id="s7a" aria-label="Proposta 1: il logo in Prompt">
   <div class="svgbox" data-lockup="prompt" data-mono="#001E35"></div>
@@ -375,7 +397,7 @@ body.solo-on .foot:hover,body.solo-on .foot:focus-within{opacity:1}
 <!-- 7 · Carattere 1 -->
 <section class="slide soft" id="s7" aria-label="Carattere, proposta 1: Prompt">
   <div class="inner head">
-    <div class="eyebrow"><span class="n">06</span>Carattere · proposta 1</div>
+    <div class="eyebrow"><span class="n">07</span>Carattere · proposta 1</div>
     <h2 class="split"><span style="font-family:'Prompt',sans-serif;font-weight:600;letter-spacing:-.02em">Prompt</span></h2>
   </div>
   <div class="inner font-s">
@@ -399,7 +421,7 @@ body.solo-on .foot:hover,body.solo-on .foot:focus-within{opacity:1}
 <!-- 8 · Carattere 2 -->
 <section class="slide soft" id="s8" aria-label="Carattere, proposta 2: Funnel Display">
   <div class="inner head">
-    <div class="eyebrow"><span class="n">07</span>Carattere · proposta 2</div>
+    <div class="eyebrow"><span class="n">08</span>Carattere · proposta 2</div>
     <h2 class="split"><span style="font-family:'Funnel Display',sans-serif;font-weight:700;letter-spacing:-.02em">Funnel Display</span></h2>
   </div>
   <div class="inner font-s">
@@ -418,7 +440,7 @@ body.solo-on .foot:hover,body.solo-on .foot:focus-within{opacity:1}
 <!-- 9 · Confronto -->
 <section class="slide" id="s9" aria-label="Prompt e Funnel a confronto">
   <div class="inner head">
-    <div class="eyebrow"><span class="n">08</span>Confronto</div>
+    <div class="eyebrow"><span class="n">09</span>Confronto</div>
     <h2 class="split">Prompt e Funnel, sullo stesso <em>fiore</em></h2>
   </div>
   <div class="inner versus">
@@ -439,7 +461,7 @@ body.solo-on .foot:hover,body.solo-on .foot:focus-within{opacity:1}
 <!-- 10 · Colori -->
 <section class="slide soft" id="s10" aria-label="Colori">
   <div class="inner head">
-    <div class="eyebrow"><span class="n">09</span>Colori</div>
+    <div class="eyebrow"><span class="n">10</span>Colori</div>
     <h2 class="split">Gli stessi quattro colori, più <em>puliti</em></h2>
   </div>
   <div class="inner colors">
@@ -458,7 +480,7 @@ body.solo-on .foot:hover,body.solo-on .foot:focus-within{opacity:1}
 <!-- 11 · Proposte -->
 <section class="slide" id="s11" aria-label="Le proposte">
   <div class="inner head">
-    <div class="eyebrow"><span class="n">10</span>Le proposte</div>
+    <div class="eyebrow"><span class="n">11</span>Le proposte</div>
     <h2 class="split">Quattro versioni del <em>marchio</em></h2>
   </div>
   <div class="inner props">
@@ -483,7 +505,7 @@ body.solo-on .foot:hover,body.solo-on .foot:focus-within{opacity:1}
 <!-- 13 · Chiusura -->
 <section class="slide soft close" id="s13" aria-label="Prossimi passi">
   <div class="inner head">
-    <div class="eyebrow"><span class="n">11</span>Prossimi passi</div>
+    <div class="eyebrow"><span class="n">12</span>Prossimi passi</div>
     <h2 class="split">Da scegliere <em>insieme</em></h2>
   </div>
   <ul class="inner choices">
@@ -796,15 +818,25 @@ const mp={isNew:false};
 const DIAG={y:-135,b:-45,o:135,g:45};
 function petalAt(k,th,s,w){const p=NEW[k],a=p.a*s,b=p.b*w,rad=th*Math.PI/180,d=TIP+a;
   return {cx:Math.cos(rad)*d,cy:Math.sin(rad)*d,a,b,r:th};}
-function bloom(P,at,tl,stag){
-  stag=stag==null?.12:stag;
-  ['y','b','g','o'].forEach((k,i)=>{
-    const pr={th:DIAG[k]-60,s:.1,w:.28};
+/* Ventaglio: i petali partono chiusi uno sull'altro sopra il giallo (in alto a sinistra)
+   e si aprono in senso orario attorno al pallino; ognuno percorre un arco diverso. */
+function bgOf(node){
+  for(let n=node;n&&n.nodeType===1;n=n.parentElement){const c=getComputedStyle(n).backgroundColor;if(c&&c!=='rgba(0, 0, 0, 0)'&&c!=='transparent')return c;}
+  return '#F0EFEE';
+}
+function bloom(P,at,tl){
+  const start=DIAG.y-18;
+  // bordo color fondo: separa le stecche sovrapposte durante l'apertura, poi sparisce
+  const edge=bgOf(P.g.ownerSVGElement), ew=.0;
+  K.forEach(k=>{P.petals[k].style.stroke=edge;P.petals[k].style.strokeWidth=2.2;P.petals[k].style.paintOrder='stroke';});
+  ['y','b','g','o'].forEach(k=>{
+    const pr={th:start,s:0,w:0};
     const apply=()=>{Object.assign(P.st[k],petalAt(k,pr.th,pr.s,pr.w));P.render();};
     apply();
-    tl.to(pr,{th:DIAG[k],duration:1.8,ease:'power3.out',onUpdate:apply},at+i*stag);
-    tl.to(pr,{s:1,w:1,duration:1.8,ease:'back.out(1.35)',onUpdate:apply},at+i*stag);
+    tl.to(pr,{s:1,w:1,duration:.55,ease:'back.out(1.7)',onUpdate:apply},at);
+    tl.to(pr,{th:DIAG[k],duration:1.6,ease:'power3.inOut',onUpdate:apply},at+.3);
   });
+  tl.to(K.map(k=>P.petals[k]),{strokeWidth:ew,duration:.5,ease:'power1.out'},at+1.75);
   return tl;
 }
 
@@ -821,6 +853,79 @@ function hlOut(P){
   return gsap.to(hl,{opacity:0,x:9,scaleX:.6,duration:.6,stagger:.06,ease:'power2.in'});
 }
 const gd={light:true};
+
+/* ---------- Proporzioni pittogramma / nome (griglia di Orisline_Soluzioni.pdf, tav. 2-3) ---------- */
+const pp={mode:'h',font:'prompt'};
+(function(){
+  const box=document.getElementById('ppStage'),items=[...document.querySelectorAll('#ppSteps li')];
+  const X=36.015; // modulo = 1/4 dell'altezza del pittogramma = 1/2 dell'altezza della scritta
+  const PIC={L:-80.78,T:-80.79,R:72.07,B:63.27};
+  let layers=[],tl;
+  function setOn(i){items.forEach((li,j)=>li.classList.toggle('on',j===i));}
+  function build(){
+    const L=Lockup(box,pp.font+(pp.mode==='v'?'V':''),{mono:OL_INK});
+    const s=L.svg,b=L.wg.getBBox(),W={L:b.x,R:b.x+b.width,T:b.y,B:b.y+b.height};
+    const C=pp.mode==='h'?{L:PIC.L-X,R:W.R+X,T:PIC.T-X,B:PIC.B+X}:{L:W.L-X,R:W.R+X,T:PIC.T-X,B:W.B+X};
+    const pad=X*.35;
+    s.setAttribute('viewBox',`${C.L-pad} ${C.T-pad} ${C.R-C.L+pad*2} ${C.B-C.T+pad*2}`);
+    const sw=X*.014,dash=`${X*.05} ${X*.05}`;
+    layers=[0,1,2,3,4].map(()=>el('g',{opacity:0},s));
+    const hl=(g,y)=>el('line',{x1:C.L,y1:y,x2:C.R,y2:y,stroke:RUST,'stroke-width':sw,'stroke-dasharray':dash,'data-d':'h'},g);
+    const vl=(g,x)=>el('line',{x1:x,y1:C.T,x2:x,y2:C.B,stroke:RUST,'stroke-width':sw,'stroke-dasharray':dash,'data-d':'v'},g);
+    const sq=(g,x,y)=>{const r=el('rect',{x,y,width:X,height:X,fill:RUST,'fill-opacity':.16,class:'sq'},g);
+      const t=el('text',{x:x+X/2,y:y+X*.64,'font-size':X*.42,fill:RUST,'text-anchor':'middle',class:'svg-label sq'},g);t.textContent='x';};
+    if(pp.mode==='h'){
+      sq(layers[0],W.R,W.T);sq(layers[0],W.R,W.T+X);
+      hl(layers[1],PIC.T);hl(layers[1],PIC.B);for(let i=0;i<4;i++)sq(layers[1],C.L,PIC.T+i*X);
+      hl(layers[2],W.T);hl(layers[2],W.B);
+      const ax=el('line',{x1:C.L,y1:(PIC.T+PIC.B)/2,x2:C.R,y2:(PIC.T+PIC.B)/2,stroke:RUST,'stroke-width':sw*2,'data-d':'h'},layers[2]);
+      vl(layers[3],PIC.R);vl(layers[3],W.L);sq(layers[3],PIC.R,(PIC.T+PIC.B)/2-X/2);
+      el('rect',{x:C.L,y:C.T,width:C.R-C.L,height:C.B-C.T,fill:'none',stroke:RUST,'stroke-width':sw*1.6},layers[4]);
+      vl(layers[4],PIC.L);vl(layers[4],W.R);
+      [[C.L,C.T],[C.R-X,C.T],[C.L,C.B-X],[C.R-X,C.B-X]].forEach(([x,y])=>sq(layers[4],x,y));
+    }else{
+      sq(layers[0],W.R,W.T);sq(layers[0],W.R,W.T+X);
+      hl(layers[1],PIC.T);hl(layers[1],PIC.B);for(let i=0;i<4;i++)sq(layers[1],PIC.L-X,PIC.T+i*X);
+      hl(layers[2],W.T);hl(layers[2],W.B);
+      el('line',{x1:(W.L+W.R)/2,y1:C.T,x2:(W.L+W.R)/2,y2:C.B,stroke:RUST,'stroke-width':sw*2,'data-d':'v'},layers[2]);
+      sq(layers[3],-X/2,PIC.B);
+      el('rect',{x:C.L,y:C.T,width:C.R-C.L,height:C.B-C.T,fill:'none',stroke:RUST,'stroke-width':sw*1.6},layers[4]);
+      vl(layers[4],W.L);vl(layers[4],W.R);
+      [[C.L,C.T],[C.R-X,C.T],[C.L,C.B-X],[C.R-X,C.B-X]].forEach(([x,y])=>sq(layers[4],x,y));
+    }
+  }
+  function reveal(i,t,at){
+    const g=layers[i];
+    t.set(g,{opacity:1},at).call(setOn,[i],at);
+    g.querySelectorAll('line').forEach(l=>{
+      const h=l.dataset.d==='h';
+      t.fromTo(l,{attr:h?{x2:+l.getAttribute('x1')}:{y2:+l.getAttribute('y1')}},{attr:h?{x2:+l.getAttribute('x2')}:{y2:+l.getAttribute('y2')},duration:.9,ease:'expo.out'},at);
+    });
+    const sqs=g.querySelectorAll('.sq');
+    if(sqs.length)t.fromTo(sqs,{opacity:0},{opacity:1,duration:.5,stagger:.04},at+.25);
+    const r=g.querySelector('rect:not(.sq)');
+    if(r)t.fromTo(r,{opacity:0},{opacity:1,duration:.6},at);
+  }
+  function play(){
+    if(tl)tl.kill();build();setOn(-1);
+    tl=gsap.timeline();
+    layers.forEach((g,i)=>reveal(i,tl,.4+i*1.5));
+    return tl;
+  }
+  function jump(i){
+    if(tl)tl.kill();
+    layers.forEach((g,j)=>gsap.set(g,{opacity:j<=i?1:0}));
+    const t=gsap.timeline();reveal(i,t,0);setOn(i);
+  }
+  items.forEach((li,i)=>li.querySelector('button').addEventListener('click',()=>jump(i)));
+  const sync=()=>{['ppH','ppV'].forEach(id=>document.getElementById(id).setAttribute('aria-pressed',(id==='ppH')===(pp.mode==='h')));
+    ['ppP','ppF'].forEach(id=>document.getElementById(id).setAttribute('aria-pressed',(id==='ppP')===(pp.font==='prompt')));};
+  document.getElementById('ppH').onclick=()=>{pp.mode='h';sync();play();};
+  document.getElementById('ppV').onclick=()=>{pp.mode='v';sync();play();};
+  document.getElementById('ppP').onclick=()=>{pp.font='prompt';sync();play();};
+  document.getElementById('ppF').onclick=()=>{pp.font='funnel';sync();play();};
+  pp.enter=play;
+})();
 
 /* ---------- Lockup statici (carattere, proposte, su colore) ---------- */
 const statics=[];
@@ -901,7 +1006,7 @@ const cl={mode:'luce',timer:null};
 
 /* ---------- Navigazione ---------- */
 const slides=[...document.querySelectorAll('.slide')];
-const hooks={s3:an,s4:co,s5:cp,s6:mp,s9:vs,s10:cl};
+const hooks={s3:an,s4:co,s5:cp,s6:mp,s6b:pp,s9:vs,s10:cl};
 const progress=document.getElementById('progress');
 slides.forEach((sl,i)=>{const b=document.createElement('button');b.type='button';b.setAttribute('aria-label','Vai alla diapositiva '+(i+1));b.onclick=()=>go(i);progress.appendChild(b);});
 // parole dei titoli
