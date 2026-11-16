@@ -745,10 +745,10 @@ const cp={font:'prompt',pay:false,light:true};
     tl=gsap.timeline({onUpdate:()=>{scrub.value=Math.round(tl.progress()*1000);},onComplete:()=>setPlay(false)});
     setPlay(true);
     tl.to(st,{dot:NEW.dot,duration:.8,ease:'back.out(3.2)',onUpdate:P.render},.2);
-    K.forEach((k,i)=>tl.to(st[k],{...NEW[k],duration:1.3,ease:'expo.out',onUpdate:P.render},.55+i*.14));
+    bloom(P,.5,tl);
     const word=L.glyphs.filter(g=>g.dataset.row==='0'),pay=L.glyphs.filter(g=>g.dataset.row==='1');
-    tl.to(word,{opacity:1,y:0,duration:.9,stagger:.06,ease:'expo.out'},1.25);
-    if(pay.length) tl.to(pay,{opacity:1,y:0,duration:.7,stagger:.018,ease:'expo.out'},1.9);
+    tl.to(word,{opacity:1,y:0,duration:.9,stagger:.06,ease:'expo.out'},1.7);
+    if(pay.length) tl.to(pay,{opacity:1,y:0,duration:.7,stagger:.018,ease:'expo.out'},2.3);
     return tl;
   }
   cp.enter=()=>{make();return anim();};
@@ -790,6 +790,24 @@ const mp={isNew:false};
   mp.enter=()=>{go(false,true);return gsap.delayedCall(1.1,()=>go(true));};
 })();
 
+/* ---------- Apertura del fiore ----------
+   Ogni petalo è incernierato sulla sua punta interna, che resta sul cerchio comune (TIP).
+   Parte piccolo, stretto e ruotato indietro; ruota sulla cerniera e si distende fino a 45°. */
+const DIAG={y:-135,b:-45,o:135,g:45};
+function petalAt(k,th,s,w){const p=NEW[k],a=p.a*s,b=p.b*w,rad=th*Math.PI/180,d=TIP+a;
+  return {cx:Math.cos(rad)*d,cy:Math.sin(rad)*d,a,b,r:th};}
+function bloom(P,at,tl,stag){
+  stag=stag==null?.12:stag;
+  ['y','b','g','o'].forEach((k,i)=>{
+    const pr={th:DIAG[k]-60,s:.1,w:.28};
+    const apply=()=>{Object.assign(P.st[k],petalAt(k,pr.th,pr.s,pr.w));P.render();};
+    apply();
+    tl.to(pr,{th:DIAG[k],duration:1.8,ease:'power3.out',onUpdate:apply},at+i*stag);
+    tl.to(pr,{s:1,w:1,duration:1.8,ease:'back.out(1.35)',onUpdate:apply},at+i*stag);
+  });
+  return tl;
+}
+
 /* ---------- Punti luce: riflesso che scorre sul petalo (luce da destra) ---------- */
 function hlIn(P,at,tl){
   const hl=K.map(k=>P.hl[k]).filter(Boolean); if(!hl.length)return;
@@ -817,9 +835,9 @@ function animStatic(slide){
     K.forEach(k=>Object.assign(st[k],{cx:0,cy:0,a:0,b:0,r:NEW[k].r}));st.dot=0;L.P.render();
     gsap.set(L.glyphs,{opacity:0,y:12});
     tl.to(st,{dot:NEW.dot,duration:.6,ease:'back.out(3)',onUpdate:L.P.render},.25+i*.12);
-    K.forEach((k,j)=>tl.to(st[k],{...NEW[k],duration:1.1,ease:'expo.out',onUpdate:L.P.render},.4+i*.12+j*.08));
-    tl.to(L.glyphs,{opacity:1,y:0,duration:.8,stagger:.02,ease:'expo.out'},.8+i*.12);
-    if(Object.keys(L.P.hl).length){ if(gd.light) hlIn(L.P,1.3+i*.15,tl); else gsap.set(K.map(k=>L.P.hl[k]),{opacity:0}); }
+    bloom(L.P,.45+i*.12,tl);
+    tl.to(L.glyphs,{opacity:1,y:0,duration:.8,stagger:.02,ease:'expo.out'},1.2+i*.12);
+    if(Object.keys(L.P.hl).length){ if(gd.light) hlIn(L.P,2.1+i*.15,tl); else gsap.set(K.map(k=>L.P.hl[k]),{opacity:0}); }
   });
   return tl;
 }
@@ -924,7 +942,8 @@ function go(i,instant){
   const delay=instant||!prev?0:.45;
   gsap.delayedCall(delay,()=>{
     if(current!==i)return;
-    if(h&&h.enter)running.push(h.enter());
+    if(h&&h.enter){const t=h.enter();running.push(t);
+      const fz=(location.search.match(/freeze=([\d.]+)/)||[])[1]; if(fz&&t&&t.pause){t.pause();t.seek(+fz,false);}} // fermo-immagine per i test
     else if(next.querySelector('[data-lockup]'))running.push(animStatic(next));
   });
 }
