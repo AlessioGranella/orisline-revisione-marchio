@@ -533,10 +533,31 @@ body.solo-on .foot:hover,body.solo-on .foot:focus-within{opacity:1}
   </div>
 </section>
 
+<!-- Variante lilla -->
+<section class="slide" id="s10b" aria-label="Variante con il petalo lilla">
+  <div class="inner head">
+    <div class="eyebrow"><span class="n">11</span>Variante</div>
+    <h2 class="split">Lo stesso fiore, con il petalo <em>lilla</em></h2>
+  </div>
+  <div class="inner colors">
+    <div class="lockups" style="--cell:var(--ag-white)">
+      <div class="cell"><div class="svgbox" id="liPrompt"></div><div class="cap">Prompt</div></div>
+      <div class="cell"><div class="svgbox" id="liFunnel"></div><div class="cap">Funnel Display</div></div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:1.125rem;min-width:0;justify-content:center">
+      <div class="seg" role="group" aria-label="Primo petalo" style="align-self:flex-start">
+        <button class="btn" type="button" data-li="giallo" aria-pressed="false">Giallo</button>
+        <button class="btn" type="button" data-li="lilla" aria-pressed="true">Lilla</button>
+      </div>
+      <div class="sw-list" id="liList"></div>
+    </div>
+  </div>
+</section>
+
 <!-- 11 · Proposte -->
 <section class="slide" id="s11" aria-label="Le proposte">
   <div class="inner head">
-    <div class="eyebrow"><span class="n">11</span>Le proposte</div>
+    <div class="eyebrow"><span class="n">12</span>Le proposte</div>
     <h2 class="split">Quattro versioni del <em>marchio</em></h2>
   </div>
   <div class="inner props">
@@ -561,7 +582,7 @@ body.solo-on .foot:hover,body.solo-on .foot:focus-within{opacity:1}
 <!-- 13 · Chiusura -->
 <section class="slide soft close" id="s13" aria-label="Prossimi passi">
   <div class="inner head">
-    <div class="eyebrow"><span class="n">12</span>Prossimi passi</div>
+    <div class="eyebrow"><span class="n">13</span>Prossimi passi</div>
     <h2 class="split">Da scegliere <em>insieme</em></h2>
   </div>
   <ul class="inner choices">
@@ -605,6 +626,7 @@ const COL={
   nuovi:{y:'#FFBE00',b:'#007EFF',o:'#FF5C27',g:'#00B775'},
   luce:{y:'#FFCD1C',b:'#008CFF',o:'#FF7029',g:'#15CC86'}
 };
+const LILLA='#BB71AC', LILLA_LUCE='#BF86B7';
 const OLDGRAD={y:['#FBBC00','#FBEB22',[0,0,1,1]],b:['#74C9F1','#2A81C3',[0,1,1,0]],o:['#FCC009','#E84D22',[1,0,0,1]],g:['#8ABC2F','#298B3E',[0,0,1,1]]};
 const OL_INK='#001E35', OLD_INK='#2F2D2B';
 const RUST='#D14124', MUSCHIO='#8FAF90', LINE='#C8C6C2';
@@ -635,7 +657,7 @@ function Picto(parent,opts={}){
     P.petals[k]=el('ellipse',{fill},g);
     if(opts.mode==='outline'){P.petals[k].setAttribute('stroke',opts.stroke||MUSCHIO);P.petals[k].setAttribute('stroke-width',.5);}
     if(opts.mode!=='mono'&&opts.mode!=='outline'||opts.withHL){
-      P.hl[k]=el('path',{d:HIGHLIGHT[k],fill:COL.luce[k],opacity:opts.light===false?0:1},g);
+      P.hl[k]=el('path',{d:HIGHLIGHT[k],fill:(opts.luce||COL.luce)[k],opacity:opts.light===false?0:1},g);
     }
   });
   P.dot=el('circle',{cx:0,cy:0,r:st.dot,fill:opts.mode==='mono'?opts.mono:(opts.ink||OL_INK)},g);
@@ -649,7 +671,7 @@ function Lockup(box,key,opts={}){
   box.innerHTML='';
   const vertical=key.endsWith('V');
   const s=svgRoot(box,'0 0 10 10');
-  const P=Picto(s,{mode:opts.mono?'mono':'flat',mono:opts.mono,light:opts.light!==false});
+  const P=Picto(s,{mode:opts.mono?'mono':'flat',mono:opts.mono,light:opts.light!==false,colors:opts.colors,luce:opts.luce});
   const wg=el('g',{fill:opts.mono||OL_INK},s);
   const glyphs=(WORDS[key]||[]).map(w=>el('path',{d:w.d,'data-row':w.row},wg));
   const bb=s.getBBox(); const pad=vertical?6:4;
@@ -1073,9 +1095,40 @@ const cl={mode:'luce',timer:null};
   cl.leave=stop;
 })();
 
+/* ---------- Variante lilla ---------- */
+const li={timer:null};
+(function(){
+  const NAMES={y:'Giallo',b:'Azzurro',o:'Arancio',g:'Verde'};
+  const list=document.getElementById('liList');
+  let Ls=[];
+  function cols(m){return m==='lilla'?{fill:{...COL.nuovi,y:LILLA},hl:{...COL.luce,y:LILLA_LUCE}}:{fill:COL.nuovi,hl:COL.luce};}
+  function rows(m){const c=cols(m);
+    list.innerHTML=K.map(k=>`<div class="sw-row"><i style="background:${c.fill[k]}"></i><span><b>${k==='y'?(m==='lilla'?'Lilla':'Giallo'):NAMES[k]}</b><span class="sub">punto luce ${c.hl[k]}</span></span><code>${c.fill[k]}</code></div>`).join('')+
+      `<div class="sw-row"><i style="background:${OL_INK}"></i><span><b>Pallino e scritta</b></span><code>${OL_INK}</code></div>`;}
+  function set(m,instant){const c=cols(m),d=instant?0:1;
+    Ls.forEach(L=>{gsap.to(L.P.petals.y,{attr:{fill:c.fill.y},duration:d,ease:'power2.inOut'});gsap.to(L.P.hl.y,{attr:{fill:c.hl.y},duration:d,ease:'power2.inOut'});});
+    document.querySelectorAll('[data-li]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.li===m));
+    rows(m);}
+  function stop(){clearTimeout(li.timer);li.timer=null;}
+  document.querySelectorAll('[data-li]').forEach(b=>b.onclick=()=>{stop();set(b.dataset.li);});
+  li.enter=()=>{
+    Ls=[Lockup(document.getElementById('liPrompt'),'prompt',{light:true}),Lockup(document.getElementById('liFunnel'),'funnel',{light:true})];
+    set('giallo',true);
+    const tl=gsap.timeline();
+    Ls.forEach((L,i)=>{const st=L.P.st;K.forEach(k=>Object.assign(st[k],{cx:0,cy:0,a:0,b:0,r:NEW[k].r}));st.dot=0;L.P.render();
+      gsap.set(L.glyphs,{opacity:0,y:12});gsap.set(K.map(k=>L.P.hl[k]),{opacity:0});
+      tl.to(st,{dot:NEW.dot,duration:.6,ease:'back.out(3)',onUpdate:L.P.render},.2+i*.15);
+      bloom(L.P,.4+i*.15,tl);
+      tl.to(L.glyphs,{opacity:1,y:0,duration:.8,stagger:.02,ease:'expo.out'},1.1+i*.15);
+      hlIn(L.P,2+i*.15,tl);});
+    stop();li.timer=setTimeout(()=>set('lilla'),3200);
+    return tl;};
+  li.leave=stop;
+})();
+
 /* ---------- Navigazione ---------- */
 const slides=[...document.querySelectorAll('.slide')];
-const hooks={s2:og,s3:an,s4:co,s5:cp,s6:mp,s6b:pp,s9:vs,s10:cl};
+const hooks={s2:og,s3:an,s4:co,s5:cp,s6:mp,s6b:pp,s9:vs,s10:cl,s10b:li};
 const progress=document.getElementById('progress');
 slides.forEach((sl,i)=>{const b=document.createElement('button');b.type='button';b.setAttribute('aria-label','Vai alla diapositiva '+(i+1));b.onclick=()=>go(i);progress.appendChild(b);});
 // parole dei titoli
